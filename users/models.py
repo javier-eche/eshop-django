@@ -10,3 +10,4 @@ class User(AbstractUser):
     dni = models.CharField(null= False, max_length=10)
     phone = models.CharField(null=True, max_length=15)
     direction = models.CharField(null=False, max_length=255)
+    is_superuser = models.BooleanField(default=False)

@@ -1,15 +1,5 @@
 from django.db import models
-
-
-class Subcategory(models.Model):
-    name = models.CharField(null=False, blank=False, max_length=100)
-
-
-class Category(models.Model):
-    name = models.CharField(null=False, blank=False, max_length=100)
-    subcategories = models.ManyToManyField(Subcategory)
-
-
+from categories.models import Category
 
 def get_upload_path(instance, filename):
     model = instance.album.model.__class__._meta
@@ -34,4 +24,9 @@ class Image(models.Model):
 
 class Product(models.Model):
     name = models.CharField(null=False, blank=False, max_length=100)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     album = models.OneToOneField(ImageAlbum, related_name='model', on_delete=models.CASCADE)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    discount = models.DecimalField(max_digits=10, decimal_places=2)
+    description = models.CharField(null=False, blank=False, max_length=200)
+    brand = models.CharField(null=False, blank=False, max_length=50)
