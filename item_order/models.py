@@ -1,3 +1,5 @@
 from django.db import models
+from products.models import Product
 
-# Create your models here.
+class Item(models.Model):
+    product = models.ManyToManyField(Product)
