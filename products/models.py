@@ -14,3 +14,9 @@ class Product(models.Model):
     discount = models.DecimalField(max_digits=10, decimal_places=2)
     description = models.CharField(null=False, blank=False, max_length=200)
     brand = models.CharField(null=False, blank=False, max_length=50)
+
+    class Meta:
+        ordering = ['name']
+    
+    def __str__(self):
+        return self.name
