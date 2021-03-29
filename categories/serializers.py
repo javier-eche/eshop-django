@@ -17,3 +17,8 @@ class CategorySerializer(serializers.ModelSerializer):
             'name',
             'subcategories'
         )
+
+class CategorySerializerSave(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'

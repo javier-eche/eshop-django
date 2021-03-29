@@ -4,7 +4,7 @@ from categories.models import Category
 
 class Product(models.Model):
     name = models.CharField(null=False, blank=False, max_length=100)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ManyToManyField(Category)
     image1 = models.ImageField(upload_to='products/', null=True, blank=True)
     image2 = models.ImageField(upload_to='products/', null=True, blank=True)
     image3 = models.ImageField(upload_to='products/', null=True, blank=True)
