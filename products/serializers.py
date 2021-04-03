@@ -3,27 +3,22 @@ from categories.models import Category
 from subcategories.models import Subcategory
 from rest_framework import serializers
 
-class SubcategoryItemSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Subcategory
-        fields = ('pk', 'name')
-
 
 class CategoryItemSerializer(serializers.ModelSerializer):
-    subcategories = SubcategoryItemSerializer(many=True, read_only=True, required=False)
+    category = serializers.SlugRelatedField(many=False, read_only=True, slug_field='name')
     class Meta:
-        model = Category
-        fields = ('id', 'name', 'subcategories')
+        model = Subcategory
+        fields = ['name','category']
 
     
 class ProductSerializer(serializers.ModelSerializer):
-    category = CategoryItemSerializer(many=True, read_only=True, required=False)
+    subcategory = CategoryItemSerializer(many=False, read_only=True)
 
     class Meta:
         model = Product
         fields = (
             'pk',
-            'category',
+            'subcategory',
             'image1',
             'image2',
             'image3',

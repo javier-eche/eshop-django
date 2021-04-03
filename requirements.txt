@@ -6,3 +6,4 @@ djangorestframework==3.9.4
 django-ckeditor==5.9.0
 Pillow==7.1.2
 django-cors-headers==2.4.0
+django-seed==0.2.2

@@ -1,9 +1,7 @@
 from django.db import models
-from subcategories.models import Subcategory
 
 class Category(models.Model):
-    name = models.CharField(null=False, blank=False, max_length=100)
-    subcategories = models.ManyToManyField(Subcategory)
+    name = models.CharField(null=False, blank=False, max_length=15)
 
     class Meta:
         ordering = ['name']

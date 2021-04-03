@@ -1,10 +1,10 @@
 from django.db import models
-from categories.models import Category
+from subcategories.models import Subcategory
 
 
 class Product(models.Model):
     name = models.CharField(null=False, blank=False, max_length=100)
-    category = models.ManyToManyField(Category)
+    subcategory = models.ForeignKey(Subcategory, on_delete=models.CASCADE)
     image1 = models.ImageField(upload_to='products/', null=True, blank=True)
     image2 = models.ImageField(upload_to='products/', null=True, blank=True)
     image3 = models.ImageField(upload_to='products/', null=True, blank=True)

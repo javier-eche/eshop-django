@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'item_order',
     'order',
     'rest_framework.authtoken',
+    'django_seed',
 ]
 
 MIDDLEWARE = [
