@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import logout
 from rest_framework import status, viewsets
 from rest_framework.decorators import action
@@ -11,6 +11,18 @@ from users.models import User
 class UserViewSet(viewsets.GenericViewSet):
     queryset = User.objects.filter(is_active=True)
     serializer_class = UserModelSerializer
+
+    @action(detail=False, methods=['get'])
+    def all(self, request):
+        queryset = User.objects.all()
+        serializer = UserModelSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+    def retrieve(self, request, pk=None):
+        queryset = User.objects.all()
+        user = get_object_or_404(queryset, pk=pk)
+        serializer = UserModelSerializer(user)
+        return Response(serializer.data)
 
     @action(detail=False, methods=['post'])
     def login(self, request):
@@ -36,3 +48,4 @@ class UserViewSet(viewsets.GenericViewSet):
         logout(request)
         data = {'success': 'Sucessfully logged out'}
         return Response(data, status=status.HTTP_200_OK)
+        
