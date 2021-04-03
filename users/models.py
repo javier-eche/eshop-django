@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from products.models import Product
 
 class User(AbstractUser):
     email = models.EmailField('email address', unique=True)
@@ -11,3 +12,4 @@ class User(AbstractUser):
     phone = models.CharField(null=True, max_length=15)
     direction = models.CharField(null=False, max_length=255)
     is_superuser = models.BooleanField(default=False)
+    favorites = models.ManyToManyField(Product)

@@ -19,6 +19,7 @@ class UserModelSerializer(serializers.ModelSerializer):
             'phone',
             'dni',
             'direction',
+            'favorites',
         )
 
 
