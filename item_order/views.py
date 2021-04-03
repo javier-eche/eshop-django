@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from .models import Item
-from .serializers import ItemSerializer
+from .serializers import ItemSerializer, ItemSerializerSave
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
