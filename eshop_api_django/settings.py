@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -46,7 +50,6 @@ INSTALLED_APPS = [
     'item_order',
     'order',
     'rest_framework.authtoken',
-    'django_seed',
 ]
 
 MIDDLEWARE = [
@@ -137,6 +140,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = 'users.User'
+
+cloudinary.config( 
+  cloud_name = "djyh1jstt", 
+  api_key = "771983341264747", 
+  api_secret = "6d2D3liiWwem24_tvhkPbulzpB8" 
+)
 
 # REST_FRAMEWORK = {
 #     'DEFAULT_RENDERER_CLASSES': (
